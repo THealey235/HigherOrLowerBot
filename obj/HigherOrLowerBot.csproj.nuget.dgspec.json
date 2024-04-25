@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot\\HigherOrLowerBot.csproj": {}
+    "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot.csproj": {}
   },
   "projects": {
-    "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot\\HigherOrLowerBot.csproj": {
+    "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot\\HigherOrLowerBot.csproj",
+        "projectUniqueName": "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot.csproj",
         "projectName": "HigherOrLowerBot",
-        "projectPath": "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot\\HigherOrLowerBot.csproj",
+        "projectPath": "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot.csproj",
         "packagesPath": "C:\\Users\\Tomga\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot\\obj\\",
+        "outputPath": "C:\\dev\\HigherOrLowerBot\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,6 +44,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

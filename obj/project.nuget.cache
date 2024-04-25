@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "1rGdCf/OrmKNXquj+aLjL6hfpNy8FxMsbI0he+dlMs/men+M1nm5MVU4QGTKQzavbruVOAGXQ/tK5ZTP1/p3yQ==",
+  "dgSpecHash": "pVIhqLo+7eHZRMrNzc0QEVhpsWGTjH4hSNJJKDRKNO+cJz69cO62nPr/mL5xjpHzMI7d8vOojMVO9K4bUq8tvg==",
   "success": true,
-  "projectFilePath": "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot\\HigherOrLowerBot.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\dev\\HigherOrLowerBot\\HigherOrLowerBot.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tomga\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\Tomga\\.nuget\\packages\\system.drawing.common\\8.0.4\\system.drawing.common.8.0.4.nupkg.sha512"
+  ],
   "logs": []
 }
