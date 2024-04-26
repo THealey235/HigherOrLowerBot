@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HigherOrLowerBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d12315e2f31835c8c77d6afb4e46b0cc15ec70f")]
 [assembly: System.Reflection.AssemblyProductAttribute("HigherOrLowerBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HigherOrLowerBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
