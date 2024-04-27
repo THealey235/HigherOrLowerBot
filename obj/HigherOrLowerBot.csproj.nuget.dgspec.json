@@ -48,6 +48,10 @@
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[8.0.4, )"
+            },
+            "Tesseract": {
+              "target": "Package",
+              "version": "[5.2.0, )"
             }
           },
           "imports": [
