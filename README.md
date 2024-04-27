@@ -1,6 +1,8 @@
 Automated bot to automate higher or lower game on:
   > https://www.higherorlowergame.com/google#goog_rewarded
 
+  If it is in learn mode, unplug internet and play untill the background is solid colours. This makes tesseract much more accurate.
+
 Will have:
   > Learn or play mode
   > Python interface for replit
