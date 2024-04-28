@@ -45,11 +45,23 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.35, )"
+            },
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[8.0.4, )"
             },
             "Tesseract": {
+              "target": "Package",
+              "version": "[5.2.0, )"
+            },
+            "Tesseract.Drawing": {
               "target": "Package",
               "version": "[5.2.0, )"
             }

@@ -1,51 +1,21 @@
-﻿using System.Drawing.Imaging;
+﻿#pragma warning disable CA1416
+
+using System.Drawing.Imaging;
 using System.Drawing;
-using Tesseract;
+using Microsoft.Data.Sqlite;
+using Dapper;
 
-public struct Image
-{
-    string ID;
-    string path;
-    public string result;
-    public Bitmap Capture;
-    public Rectangle Rect;
-
-   TesseractEngine engine = new TesseractEngine(Path.Combine(Directory.GetCurrentDirectory(), "tessdata"), "eng");
-
-    public Image(string id, Rectangle rect, Bitmap bitmap)
-    {
-        Rect = rect;
-        Capture = bitmap;
-        ID = id;
-        path = (Path.Combine(Directory.GetCurrentDirectory(), $"{ID}.jpeg"));
-    }
-
-    public void readText()
-    {
-        ToJpeg();
-        var ocrInput = Pix.LoadFromFile(path);
-        using (Page page = engine.Process(ocrInput))
-        {
-            result = page.GetText();
-        }
-        Console.WriteLine(result);
-    } 
-
-    public void ToJpeg()
-    {
-        Capture.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
-    }
-}
-
+namespace HigherOrLowerBot;
 
 static class Program
 {
-    static string mode;
     //Boxes to capture text/colour to see whether a round has ended or read text on the screen
-    static Dictionary<string, Image> images = new Dictionary<string, Image>();
+    static Dictionary<string, Image> images = [];
     static bool hasFailed = false;
-    static Color green = Color.FromArgb(255, 0, 216, 90);
-    static Color red = Color.FromArgb(255, 241, 66, 66);
+    static readonly  Color green = Color.FromArgb(255, 0, 216, 90);
+    static readonly Color red = Color.FromArgb(255, 241, 66, 66);
+    static readonly string[] keys = ["Left", "Right"];
+    static readonly string DBPath = Path.Combine(Directory.GetCurrentDirectory(), "DB");
 
 
     public static void Main()
@@ -61,10 +31,12 @@ static class Program
         images.Add("Right", new Image("Right", new Rectangle(1370, 550, 1148, 365), new Bitmap(1148, 365, PixelFormat.Format32bppArgb)));
         images.Add("Centre", new Image("Centre", new Rectangle(1280, 650, 1, 1), new Bitmap(1, 1, PixelFormat.Format32bppArgb)));
 
+        getDB();
+
         while (true)
         {
             Console.WriteLine("Waiting");
-            awaitEndOfRound();
+            AwaitEndOfRound();
             Console.WriteLine("Round End!");
 
             Screenshot("Left");
@@ -79,14 +51,14 @@ static class Program
         captureGraphics.CopyFromScreen(images[key].Rect.Left, images[key].Rect.Top, 0, 0, images[key].Rect.Size);
         if (key != "Centre")
         {
-            images[key].readText();
+            images[key].ReadText();
         }
     }
 
     static Func<int, int> negCheck = x => (x > 0) ? x : x * -1;
 
     //waits until the round has ended: sees whether one of the middle pixels has changed to green/red
-    static void awaitEndOfRound()
+    static void AwaitEndOfRound()
     {
         int now;
         int lastFrame = Environment.TickCount;
@@ -104,7 +76,6 @@ static class Program
                 System.Threading.Thread.Sleep((5000000 - negCheck(delta)) / 10000);
             }
 
-            //slightly altered version of the screenshot method (bitmap is not saved as a jpeg)
             Screenshot("Centre");
             color = images["Centre"].Capture.GetPixel(0, 0);
             if (color == green)
@@ -118,6 +89,20 @@ static class Program
             }
 
 
+        }
+    }
+
+    static async void getDB()
+    {
+        await using var connection = new SqliteConnection($"Data Source={DBPath}");
+
+        var sql = "SELECT * FROM DB";
+
+        var results = await connection.QueryAsync<DataBase>(sql);
+
+        foreach (var s in results)
+        {
+            Console.WriteLine($"Name: {s.Name}, Num: {s.Num}");
         }
     }
 }
