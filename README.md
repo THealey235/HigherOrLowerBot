@@ -7,4 +7,4 @@ Will have:
   - Python interface for replit
 
 
-It is possible to improve the accuracy of tessarct ocr with a traineddata file trained on Geologica Roman, Medium font. However, i would rather not talk about what happend in pursuit of that.
+It is possible to improve the accuracy of tessarct ocr with a traineddata file trained on Geologica Roman, Medium font. However, i would rather not talk about what happend in my pursuit of that.
