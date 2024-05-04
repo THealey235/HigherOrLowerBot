@@ -29,6 +29,7 @@ namespace HigherOrLowerBot
             {
                 Console.Write("Already in Database. ");
             }
+            connection.Close();
         }
 
         public async static void ReadNum(String name)
@@ -43,7 +44,8 @@ namespace HigherOrLowerBot
             {
                 Console.WriteLine("Name is not in table");
             }
-            
+            connection.Close();
+
         }
 
         public async static void ReadDB()
